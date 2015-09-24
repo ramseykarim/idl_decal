@@ -48,7 +48,7 @@ pro error5
    endfor
    for i = 0, s[1] - 1 do begin
       for j = 0, s[2] - 1 do begin
-         if i + j > 45 then begin
+         if i + j GT 45 then begin
             x[i,j] = i + j
          endif
       endfor
