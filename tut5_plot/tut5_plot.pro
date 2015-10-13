@@ -14,6 +14,7 @@ psopen, 'tut5_plot_ps.eps', /encapsulated, /color
         TITLE='Hell yeah', CHARSIZE=2, XRANGE=[-1.0, 1.0], $
         YRANGE=[-1.0, 1.0], /ISOTROPIC
   oplot, circx, circy2
+
 ; Loading a 'spectrum' color scheme
   loadct, 6
 
