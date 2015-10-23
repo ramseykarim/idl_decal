@@ -11,7 +11,7 @@ pro perfect_dist
   y = ((10^x)/(factorial(x)))*(exp(-10))
   loadct, 0
   plot, [0], [0], XRANGE=[0,30], YRANGE=[0, 0.14], $
-        XTITLE='Location', YTITLE='Count', TITLE='MCMC-theoretical', $
+        XTITLE='Location', YTITLE='Count', TITLE='MCMC distributions', $
         CHARSIZE=1.2, COLOR=0, BACKGROUND=255
   loadct, 2
   oplot, x, y, PSYM=10, COLOR=100
@@ -30,7 +30,7 @@ end
 
 
 ; Picks a number between -1 and 1 (-1=left, 0=stay, 1=right)
-; Exploits the fact that randomu(seed) generates a number from 0 to 1,
+; Uses the fact that randomu(seed) generates a number from 0 to 1,
 ; and the probabilities sum to 1
 
 function step_decide, p
@@ -63,12 +63,12 @@ pro main, x0, s
   xi = x0
   results = [[xi], [1]]
   i = 1
-  
+  steplog = [xi]
+
 ; Iteration creates a 2D array, the x values carrying the values being
 ; stepped to, and the y values carrying the number of steps to that
 ; value
-; Creating this 2D array will eliminate the need for the HISOGRAM
-; function
+; A steplog array also keeps track of the individual steps
   while i LT s do begin
      xi = xi + step_decide(prob_test(xi))
      existence = where(results[*, 0] EQ xi)
@@ -77,6 +77,7 @@ pro main, x0, s
      endif else begin
         results[existence, 1] = results[existence, 1] + 1
      endelse
+     steplog = [steplog, xi]
      i = i+1
   endwhile
 
@@ -94,13 +95,17 @@ pro main, x0, s
   results = float(results)
   results[*, 1] = results[*, 1]/float(s)
 
-; Plot the results
+; Overplot the results; we are assuming the equation has already been plotted
+  loadct, 1
+  oplot, results[*,0], results[*,1], PSYM=10, COLOR=180
+
+; Now plot the steps
   loadct, 0
-  plot, [0], [0], XRANGE=[0,30], YRANGE=[0, 0.14], $
-        XTITLE='Location', YTITLE='Count', TITLE='MCMC-experimental', $
-        CHARSIZE=1.2, COLOR=0, BACKGROUND=255
+  plot, [0], [0], XRANGE=[0, s], YRANGE=[0, 25], $
+        TITLE='Steps Taken', CHARSIZE=1.2, COLOR=0, $
+        XTITLE='Step number', YTITLE='Value', BACKGROUND=255
   loadct, 2
-  oplot, results[*,0], results[*,1], PSYM=10, COLOR=170
+  oplot, findgen(s), steplog, COLOR=35
 end
 
 
@@ -109,7 +114,7 @@ end
 ; plots
 
 pro mcmc, start, steps
-  !P.MULTI = [0, 2, 1]
+  !P.MULTI = [0, 1, 2]
   perfect_dist
   main, start, steps
 end
