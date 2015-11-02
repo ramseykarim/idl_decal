@@ -70,6 +70,7 @@ function long_where
 
   ;Index matches length of generated array
   for i=0, 999 do begin
+;;;;;;;;;;;can use n_elements here to get length of array;;;;;;;;;;
 
   ;Build new array
      if array[i] GE 50.0 then array_where = [array_where, array[i]]

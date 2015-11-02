@@ -100,7 +100,8 @@ function find_three_centroids, arr
 ; Returns a 3-element array of the indices of the centroids
   return, centroids
 end
-
+;;;;;;;;;;;;;;;;;;Doesn't give me the right values when I load
+;;;;;;;;;;;;;;;;;;in spectra.txt (-20);;;;;;;;;;;;;;;;;;
 
 ; End of answer
 
@@ -147,3 +148,6 @@ function find_centroids_OLD, arr
   cents = [round(cent1), round(cent2), round(cent3)]
   return, cents
 end
+
+
+
