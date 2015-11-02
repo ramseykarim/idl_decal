@@ -2,6 +2,8 @@
 ; Cats fits file
 ;---------------
 
+;;;LATE -20
+
 ;Basic distance formula for later use
 
 function dist, a, b
@@ -71,13 +73,13 @@ pro do_the_thing
   KIT1NAME = 'Molly'
   KIT2NAME = 'Mary'
   KIT3NAME = 'Mike'
-  KIT4NAME = 'Malakai'
+  KIT4NAME = 'Malakai' ;;;Why are these hard coded????? Use the deader. -5
 
   LOCS = [[KIT1LOC], [KIT2LOC], [KIT3LOC], [KIT4LOC]]
   NAMES = [KIT1NAME, KIT2NAME, KIT3NAME, KIT4NAME]
 
   loadct, 0
-  img=mrdfits('idl_image.fits', 0, hdr)
+  img=mrdfits('idl_image.fits', 0, hdr) ;;;This file path isnt right. -5
   display, img, TITLE='Cats', charsize=1.5
 
   KIT1BOX = img[0:300, 280:550]

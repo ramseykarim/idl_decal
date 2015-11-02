@@ -2,6 +2,9 @@
 ; some functions for y'all.
 ;..........................
 
+;;;COMMENT YOUR CODE> I know it doesnt really matter here, but it will
+;;;in the future. -5
+
 function d_t_r, d
   r = d * 3.1415926535 /180
   return, r

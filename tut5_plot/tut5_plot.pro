@@ -1,5 +1,7 @@
 ; My plot! :)
 
+;;;Nice job. Looks creepy in the window without any title or circle.
+
 pro smiley
 ; Initial x values
   circx = findgen(200.0)/100 - 1
