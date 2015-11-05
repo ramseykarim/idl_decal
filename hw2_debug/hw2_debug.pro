@@ -18,7 +18,7 @@ end
 
 ;Changed function into procedure since it doesn't take an
 ;argument and fixed variable assignment.
-pro error3
+pro error3 ;;; Should still be a function. -5
    a = 'ed '
    b = 'is '
    c = 'a girl?'
@@ -30,7 +30,7 @@ end
 pro error4
    x = ['1', '2', '3']
    y = ['a', 'b', 'c']
-   z = [x, y]
+   z = [x, y] ;;; a print statement would be helpful
 end
 
 

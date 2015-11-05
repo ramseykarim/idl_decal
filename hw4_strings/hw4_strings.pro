@@ -32,3 +32,4 @@ pro getaclue
   mystring = strmid(mystring, 0, o_pos) + repstr(strmid(mystring, o_pos), 'o')
   print, mystring
 end
+;;;;;;;;;;;;;;;late (-20);;;;;;;;;;;
